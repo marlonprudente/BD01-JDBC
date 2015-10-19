@@ -32,9 +32,9 @@ public class BuscaLivroGui1 extends javax.swing.JFrame {
             System.exit(0);
         }
         try{
-        String url = "jdbc:mysql://100.43.1.160/livraria";
-        String user = "root";
-        String passwd = "mpo121991";
+        String url = "jdbc:mysql://200.134.10.33/livraria1562339";
+        String user = "banco120132";
+        String passwd = "$$dafuq";
         con = DriverManager.getConnection(url, user, passwd);
         stmtNavegar = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
         rsNavegar = stmtNavegar.executeQuery("select titulo, autor, preco from livros");
@@ -384,8 +384,10 @@ public class BuscaLivroGui1 extends javax.swing.JFrame {
         try{        
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("select titulo, autor, preco from livros where titulo like '%" + title +"%'");
+        rs.next();
         do{
             dados.add(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+            
             
         }while(rs.next());
         
